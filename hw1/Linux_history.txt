@@ -1,0 +1,23 @@
+mkdir linux_lecture
+touch notes.txt
+cp ~/notes.txt ~/linux_lecture/
+ls -l
+ls -la1r ~/
+mv notes.txt new_notes.txt
+rm new_notes.txt linux_lecture/notes.txt
+touch -a -m -t 202001010415.00 linux_lecture/homework.sh
+touch linux_lecture/hw.sh linux_lecture/hw1.sh linux_lecture/hw2.sh linux_lecture/hw1.txt
+cd ~/linux_lecture 
+find *.txt
+cd ../
+mkdir lecture_new && find ~/linux_lecture -name '*.txt' -exec cp {} ~/lecture_new/ \;
+echo "echo 'linux_lecture'" > linux_lecture/homework.sh
+cat ~/linux_lecture/homework.sh
+chmod u-rx+w linux_lecture/homework.sh
+cat ~/linux_lecture/homework.sh
+chmod u+rwx linux_lecture/homework.sh
+cat ~/linux_lecture/homework.sh
+~/linux_lecture/homework.sh
+head -n 7 ~/linux_lecture/homework.sh
+touch notes.sh && echo 'ls' > notes.sh
+chmod u+x notes.sh && ~/notes.sh

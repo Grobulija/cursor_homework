@@ -1,0 +1,92 @@
+kate@ubuntu:~$ mkdir linux_lecture
+kate@ubuntu:~$ touch notes.txt
+kate@ubuntu:~$ cp ~/notes.txt ~/linux_lecture/
+kate@ubuntu:~$ ls -l
+total 64
+drwxrwxr-x 3 kate kate 4096 Apr 28 17:14 cursor_git
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Desktop
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Documents
+drwxr-xr-x 3 kate kate 4096 Feb 27 05:10 Downloads
+-rw-rw-r-- 1 kate kate 6322 Apr 28 17:22 Git_full.txt
+-rw-rw-r-- 1 kate kate  936 Apr 28 17:26 Git_history.txt
+-rw-rw-r-- 1 kate kate    0 Apr 28 17:26 Linux_full.txt
+-rw-rw-r-- 1 kate kate  787 Apr 28 17:28 Linux_history.txt
+drwxrwxr-x 2 kate kate 4096 Apr 28 17:28 linux_lecture
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Music
+-rw-rw-r-- 1 kate kate    0 Apr 28 17:28 notes.txt
+drwxr-xr-x 2 kate kate 4096 Apr 28 16:26 Pictures
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Public
+drwxrwxr-x 4 kate kate 4096 Feb 27 05:10 PycharmProjects
+drwxr-xr-x 5 kate kate 4096 Apr 28 17:16 snap
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Templates
+drwxr-xr-x 2 kate kate 4096 Feb 26 05:59 Videos
+kate@ubuntu:~$ ls -la1r ~/
+total 124
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Videos
+drwx------  6 kate kate 4096 Feb 27 06:19 .thunderbird
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Templates
+-rw-r--r--  1 kate kate    0 Feb 26 06:55 .sudo_as_admin_successful
+drwx------  2 kate kate 4096 Apr 28 17:00 .ssh
+drwxr-xr-x  5 kate kate 4096 Apr 28 17:16 snap
+drwxrwxr-x  4 kate kate 4096 Feb 27 05:10 PycharmProjects
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Public
+-rw-r--r--  1 kate kate  807 Feb 26 05:52 .profile
+drwxr-xr-x  2 kate kate 4096 Apr 28 16:26 Pictures
+-rw-rw-r--  1 kate kate    0 Apr 28 17:28 notes.txt
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Music
+drwx------  5 kate kate 4096 Mar  1 02:49 .mozilla
+drwxr-xr-x  3 kate kate 4096 Feb 26 05:59 .local
+drwxrwxr-x  2 kate kate 4096 Apr 28 17:28 linux_lecture
+-rw-rw-r--  1 kate kate  787 Apr 28 17:28 Linux_history.txt
+-rw-rw-r--  1 kate kate    0 Apr 28 17:26 Linux_full.txt
+drwxrwxr-x  4 kate kate 4096 Feb 26 12:00 .java
+drwx------  3 kate kate 4096 Feb 26 11:55 .gnupg
+-rw-rw-r--  1 kate kate  936 Apr 28 17:26 Git_history.txt
+-rw-rw-r--  1 kate kate 6322 Apr 28 17:22 Git_full.txt
+-rw-rw-r--  1 kate kate   53 Apr 28 16:55 .gitconfig
+drwxr-xr-x  3 kate kate 4096 Feb 27 05:10 Downloads
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Documents
+drwxr-xr-x  2 kate kate 4096 Feb 26 05:59 Desktop
+drwxrwxr-x  3 kate kate 4096 Apr 28 17:14 cursor_git
+drwx------ 17 kate kate 4096 Apr 28 17:16 .config
+drwxr-xr-x 18 kate kate 4096 Mar  1 03:00 .cache
+-rw-r--r--  1 kate kate 3771 Feb 26 05:52 .bashrc
+-rw-r--r--  1 kate kate  220 Feb 26 05:52 .bash_logout
+-rw-------  1 kate kate  330 Apr 28 16:46 .bash_history
+drwxr-xr-x  3 root root 4096 Feb 26 05:52 ..
+drwxr-xr-x 22 kate kate 4096 Apr 28 17:28 .
+kate@ubuntu:~$ mv notes.txt new_notes.txt
+kate@ubuntu:~$ rm new_notes.txt linux_lecture/notes.txt
+kate@ubuntu:~$ touch -a -m -t 202001010415.00 linux_lecture/homework.sh
+kate@ubuntu:~$ touch linux_lecture/hw.sh linux_lecture/hw1.sh linux_lecture/hw2.sh linux_lecture/hw1.txt
+kate@ubuntu:~$ cd ~/linux_lecture
+kate@ubuntu:~/linux_lecture$ find *.txt
+hw1.txt
+kate@ubuntu:~/linux_lecture$ cd ../
+kate@ubuntu:~$ mkdir lecture_new && find ~/linux_lecture -name '*.txt' -exec cp {} ~/lecture_new/ \;
+kate@ubuntu:~$ echo "echo 'linux_lecture'" > linux_lecture/homework.sh
+kate@ubuntu:~$ cat ~/linux_lecture/homework.sh
+echo 'linux_lecture'
+kate@ubuntu:~$ chmod u-rx+w linux_lecture/homework.sh
+kate@ubuntu:~$ cat ~/linux_lecture/homework.sh
+cat: /home/kate/linux_lecture/homework.sh: Permission denied
+kate@ubuntu:~$ chmod u+rwx linux_lecture/homework.sh
+kate@ubuntu:~$ cat ~/linux_lecture/homework.sh
+echo 'linux_lecture'
+kate@ubuntu:~$ ~/linux_lecture/homework.sh
+linux_lecture
+kate@ubuntu:~$ head -n 7 ~/linux_lecture/homework.sh
+1
+2
+3
+4
+5
+6
+7
+kate@ubuntu:~$ touch notes.sh && echo 'ls' > notes.sh
+kate@ubuntu:~$ chmod u+x notes.sh && ~/notes.sh
+cursor_git  Git_full.txt     Linux_history.txt	Pictures	 Templates
+Desktop     Git_history.txt  linux_lecture	Public		 Videos
+Documents   lecture_new      Music		PycharmProjects
+Downloads   Linux_full.txt   notes.sh		snap
+

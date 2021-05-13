@@ -1,0 +1,159 @@
+kate@ubuntu:~$ mkdir cursor_git
+kate@ubuntu:~$ cd cursor_git
+kate@ubuntu:~/cursor_git$ touch first.py
+kate@ubuntu:~/cursor_git$ git init
+Initialized empty Git repository in /home/kate/cursor_git/.git/
+kate@ubuntu:~/cursor_git$ git add first.py
+kate@ubuntu:~/cursor_git$ git commit -m "adding first.py"
+[master (root-commit) 4c62ac3] adding first.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first.py
+kate@ubuntu:~/cursor_git$ git log
+commit 4c62ac3f4085f73b4922dca6572af56f68793feb (HEAD -> master)
+Author: Grobulija <skleppic@gmail.com>
+Date:   Wed Apr 28 16:55:19 2021 -0700
+
+    adding first.py
+kate@ubuntu:~/cursor_git$ touch second.py
+kate@ubuntu:~/cursor_git$ git add second.py
+kate@ubuntu:~/cursor_git$ git commit -m "adding second.py"
+[master abb589e] adding second.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 second.py
+kate@ubuntu:~/cursor_git$ rm first.py
+kate@ubuntu:~/cursor_git$ git add .
+kate@ubuntu:~/cursor_git$ git commit -m "removing first.py"
+[master 5bf1578] removing first.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 first.py
+kate@ubuntu:~/cursor_git$ git log
+commit 5bf15780e31dc7c475a8d248861363df4955a141 (HEAD -> master)
+Author: Grobulija <skleppic@gmail.com>
+Date:   Wed Apr 28 16:59:38 2021 -0700
+
+    removing first.py
+
+commit abb589e4d4856e7978b6f4d78a5c382f0a414a6d
+Author: Grobulija <skleppic@gmail.com>
+Date:   Wed Apr 28 16:58:59 2021 -0700
+
+    adding second.py
+
+commit 4c62ac3f4085f73b4922dca6572af56f68793feb
+Author: Grobulija <skleppic@gmail.com>
+Date:   Wed Apr 28 16:55:19 2021 -0700
+
+    adding first.py
+kate@ubuntu:~/cursor_git$ git remote add origin https://github.com/Grobulija/cursor_git.git
+kate@ubuntu:~/cursor_git$ git remote -v
+origin	https://github.com/Grobulija/cursor_git.git (fetch)
+origin	https://github.com/Grobulija/cursor_git.git (push)
+kate@ubuntu:~/cursor_git$ git push --set-upstream origin master
+Username for 'https://github.com': Grobulija
+Password for 'https://Grobulija@github.com': 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 636 bytes | 636.00 KiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0)
+To https://github.com/Grobulija/cursor_git.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+kate@ubuntu:~/cursor_git$ git branch first
+kate@ubuntu:~/cursor_git$ git branch second
+kate@ubuntu:~/cursor_git$ git checkout second
+Switched to branch 'second'
+kate@ubuntu:~/cursor_git$ git branch
+  first
+  master
+* second
+kate@ubuntu:~/cursor_git$ echo 'print("Hello")'> second.py
+kate@ubuntu:~/cursor_git$ git stash
+Saved working directory and index state WIP on second: 5bf1578 removing first.py
+kate@ubuntu:~/cursor_git$ git checkout first
+Switched to branch 'first'
+kate@ubuntu:~/cursor_git$ git checkout second
+Switched to branch 'second'
+kate@ubuntu:~/cursor_git$ git stash pop
+On branch second
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   second.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (2c54042f87525cdfad805eb896abebfeb44c2d9e)
+kate@ubuntu:~/cursor_git$ git add second.py
+kate@ubuntu:~/cursor_git$ git commit -m "Changing second.py"
+[second 0b683bb] Changing second.py
+ 1 file changed, 1 insertion(+)
+kate@ubuntu:~/cursor_git$ git push --set-upstream origin second
+Username for 'https://github.com': Grobulija
+Password for 'https://Grobulija@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 265 bytes | 265.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'second' on GitHub by visiting:
+remote:      https://github.com/Grobulija/cursor_git/pull/new/second
+remote: 
+To https://github.com/Grobulija/cursor_git.git
+ * [new branch]      second -> second
+Branch 'second' set up to track remote branch 'second' from 'origin'.
+kate@ubuntu:~/cursor_git$ git checkout first
+Switched to branch 'first'
+kate@ubuntu:~/cursor_git$ echo 'print("Cursor")' > second.py
+kate@ubuntu:~/cursor_git$ git add second.py
+kate@ubuntu:~/cursor_git$ git commit -m "Changing second.py"
+[first 8122786] Changing second.py
+ 1 file changed, 1 insertion(+)
+kate@ubuntu:~/cursor_git$ git push --set-upstream origin first
+Username for 'https://github.com': Grobulija
+Password for 'https://Grobulija@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 267 bytes | 267.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'first' on GitHub by visiting:
+remote:      https://github.com/Grobulija/cursor_git/pull/new/first
+remote: 
+To https://github.com/Grobulija/cursor_git.git
+ * [new branch]      first -> first
+Branch 'first' set up to track remote branch 'first' from 'origin'.
+kate@ubuntu:~/cursor_git$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+kate@ubuntu:~/cursor_git$ git merge second
+Updating 5bf1578..0b683bb
+Fast-forward
+ second.py | 1 +
+ 1 file changed, 1 insertion(+)
+kate@ubuntu:~/cursor_git$ git merge first
+Auto-merging second.py
+CONFLICT (content): Merge conflict in second.py
+Automatic merge failed; fix conflicts and then commit the result.
+kate@ubuntu:~/cursor_git$ subl second.py
+kate@ubuntu:~/cursor_git$ cat second.py
+<<<<<<< HEAD
+print("Hello")
+=======
+print("Cursor")
+>>>>>>> first
+kate@ubuntu:~/cursor_git$ git add second.py
+kate@ubuntu:~/cursor_git$ git commit -m "Resolving conflict in second.py and merging changes"
+[master 7c96c14] Resolving conflict in second.py and merging changes
+kate@ubuntu:~/cursor_git$ git push
+Username for 'https://github.com': Grobulija
+Password for 'https://Grobulija@github.com': 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 346 bytes | 346.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/Grobulija/cursor_git.git
+   5bf1578..7c96c14  master -> master
+

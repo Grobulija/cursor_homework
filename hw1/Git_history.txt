@@ -1,0 +1,42 @@
+mkdir cursor_git
+cd cursor_git
+touch first.py
+git init
+git add first.py
+git commit -m "adding first.py"
+git log
+touch second.py
+git add second.py
+git commit -m "adding second.py"
+rm first.py
+git add .
+git commit -m "removing first.py"
+git log
+git remote add origin https://github.com/Grobulija/cursor_git.git
+git remote -v
+git push --set-upstream origin master
+git branch first
+git branch second
+git checkout second
+git branch
+echo 'print("Hello")' > second.py
+git stash
+git checkout first
+git checkout second
+git stash pop
+git add second.py
+git commit -m "Changing second.py"
+git push --set-upstream origin second
+git checkout first
+echo 'print("Cursor")' > second.py
+git add second.py
+git commit -m "Changing second.py"
+git push --set-upstream origin first
+git checkout master
+git merge second
+git merge first
+subl second.py
+cat second.py
+git add second.py
+git commit -m "Resolving conflict in second.py and merging changes"
+git push
