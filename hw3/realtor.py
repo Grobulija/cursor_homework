@@ -27,15 +27,13 @@ class Realtor(metaclass=RealtorCity):
     def offer_discount(self, house):
         if house not in self.houses_sale:
             print(f'This house is not on the list.')
+            return False
         else:
             print(f'Yay! Realtor {self.name} can offer a {self.discount}% off.')
             house.apply_discount(self.discount)
             print(f'Price after discount applied: {house.cost}.')
+            return True
 
     @staticmethod
     def steal_money():
-        rnd = random.randrange(0, 100)
-        if rnd <= 10:
-            return True
-        else:
-            return False
+        return random.randrange(0, 100) <= 10

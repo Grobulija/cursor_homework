@@ -45,15 +45,17 @@ class Person(Human):
     def buy_house(self, house, realtor):
         if house not in realtor.houses_sale:
             print(f'There is no such house in the list!')
-            return
+            return False
         if house.cost > self.money_avail:
             print(f'Person {self.name} does not have enough money')
-            return
+            return False
         if realtor.steal_money():
             self.money_avail -= house.cost*0.3
             print(f'Realtor {realtor.name} steal money. Now {self.name} has {self.money_avail}')
+            return False
         else:
             realtor.houses_sale.remove(house)
             self.pers_home.append(house)
             self.money_avail -= house.cost
             print(f' {self.name} bought house successfully with {house.cost}!')
+            return True
