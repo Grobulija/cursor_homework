@@ -1,0 +1,24 @@
+pip install -r ./requirements.txt
+python3 app.py
+docker build -t my_image .
+docker images
+docker run -d -p 8080:8080 my_image 
+docker ps
+docker attach cb2874696bce
+docker inspect cb2874696bce
+docker logs cb2874696bce
+docker stop cb2874696bce
+docker build -t my_image .
+docker run -d -p 8080:8080 my_image 
+docker stop cb2874696bce
+
+kate@ubuntu:~/cursor_homework/hw8$ docker run -it --name my_story ubuntu
+root@ad4ec0e58a0a:/# echo "Your story" > story.txt
+root@ad4ec0e58a0a:/# apt-get update && apt-get install cowsay
+root@ad4ec0e58a0a:/# cat story.txt|/usr/games/cowsay
+
+kate@ubuntu:~/cursor_homework/hw8$ docker run -it --name my_story_2 ubuntu
+
+root@6eb2bf8db882:/# ls
+root@6eb2bf8db882:/# cat story.txt
+root@6eb2bf8db882:/# cd usr/games/cowsay
