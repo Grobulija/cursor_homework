@@ -40,10 +40,12 @@ class TestEmployee(unittest.TestCase):
         self.assertEqual(self.employee.pay, 55882.0)
 
     @patch('employee.requests.get')
-    def test_monthly_schedule(self, mocker):
+    def test_monthly_schedule_s(self, mocker):
         mocker.side_effect = MockTestTrue
         self.assertEqual(self.employee.monthly_schedule('April'), 'response.ok = True')
 
+    @patch('employee.requests.get')
+    def test_monthly_schedule_e(self, mocker):
         mocker.side_effect = MockTestFalse
         self.assertEqual(self.employee.monthly_schedule('February'), 'Bad Response!')
 
