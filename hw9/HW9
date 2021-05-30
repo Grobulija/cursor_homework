@@ -1,0 +1,9 @@
+mkdir ubuntu
+docker save -o ubuntu/ubuntu.tar ubuntu
+tar -xvf ubuntu/ubuntu.tar -C ubuntu 
+
+docker build -t rome_time .
+docker images
+docker run -d -p 8080:8080 rome_time
+docker ps
+docker stop 39
