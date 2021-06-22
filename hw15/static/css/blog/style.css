@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: hotpink;
+}
+
+.header a {
+    color: white;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer {
+
+}
+
+.footer a:hover {
+    color: #808080;
+    text-decoration: underline;
+}
+
+.footer a {
+    color: #808080;
+}
+
