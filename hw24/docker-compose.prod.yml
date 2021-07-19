@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+
+  web:
+    build: ./docker/python/Dockerfile.prod
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    volumes:
+        - .:/usr/src/app
+
+  elasticsearch:
+    image: elasticsearch:7.13.3
+    container_name: elasticsearch
+    hostname: elasticsearch
+    environment:
+      - "discovery.type=single-node"
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - blognetwork
+
+  kibana:
+    image: kibana:7.13.3
+    container_name: kibana
+    hostname: kibana
+    ports:
+      - 5601:5601
+    links:
+       - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - blognetwork
+
+networks:
+    blognetwork:

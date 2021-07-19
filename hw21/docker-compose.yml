@@ -24,6 +24,7 @@ services:
       - mysql
     links:
       - mysql
+
   mysql:
     image: mysql:8.0
     container_name: flask-mysql
@@ -38,5 +39,3 @@ services:
       - MYSQL_PASSWORD=flask
     ports:
       - "8003:3306"
-
-
