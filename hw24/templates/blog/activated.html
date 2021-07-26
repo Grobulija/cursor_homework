@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+<title>Hello {{ session.get('user').get('username') }}!</title>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Dear {{ session.get('user').get('username') }}!<br>
+        Your profile has been successfully activated.<br>
+        Thank you for signing up!</h1>
+</div>
+{% endblock %}

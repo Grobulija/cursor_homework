@@ -46,7 +46,6 @@ def user_store():
     msg = Message('Dear Client!', sender='lolkeklala7@gmail.com', recipients=[user.email])
     msg.html = render_template('blog/emails/activate.html', confirm_url=confirm_url)
     mail.send(msg)
-    # flash('You were successfully logged in')
 
     session['user'] = user.serialize
     return redirect("/")
@@ -77,12 +76,20 @@ def login():
     if user:
         if check_password(user.password, request.form.get('password')):
             session['user'] = user.serialize
+        else:
+            flash('Please check your password and try again.')
+            return redirect('/sign-in')
     else:
         user = User.query.filter_by(username=request.form.get('username')).first()
         if user:
             if check_password(user.password, request.form.get('password')):
                 session['user'] = user.serialize
-
+            else:
+                flash('Please check your password and try again.')
+                return redirect('/sign-in')
+        else:
+            flash('Please check your login and try again.')
+            return redirect('/sign-in')
     return redirect('/')
 
 

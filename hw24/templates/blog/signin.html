@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     {% include 'blog/shared/head.html' %}
-    <title>Sign up</title>
+    <title>Sign In</title>
 </head>
 <body>
 {% include 'blog/shared/header.html' %}
 
 <div class="container">
-    <h1>Sign Up</h1>
-    <form class="needs-validation" novalidate action="/user-register" method="POST" enctype="multipart/form-data">
+    <h1>Sign In</h1>
+    <form class="needs-validation" novalidate action="/login" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" required class="form-control" id="username" name="username" placeholder="Kek">
@@ -20,8 +20,8 @@
                 Empty title
             </div>
         </div>
-           <div class="form-group">
-            <label for="username">Password</label>
+        <div class="form-group">
+            <label for="password">Password</label>
             <input type="password" required class="form-control" id="password" name="password" placeholder="Kek">
             <div class="valid-feedback">
                 Looks good!
@@ -30,25 +30,22 @@
                 Empty title
             </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" required class="form-control" id="email" name="email" placeholder="test@test.com">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-            <div class="invalid-feedback">
-                Empty slug
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea required class="form-control" id="description" name="description" rows="3"></textarea>
-            <div class="invalid-feedback">
-                Empty description
-            </div>
-        </div>
         <div class="btn-group mg-top-sm col-sm-12" role="group" aria-label="Create article">
             <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="col-sm-4">
+            {% with errors = get_flashed_messages() %}
+            {% if errors %}
+            {%- for message in errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick=delete_flash(this)>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor -%}
+            {% endif %}
+            {% endwith %}
         </div>
     </form>
 </div>
@@ -71,6 +68,13 @@
     });
   }, false);
 })();
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function delete_flash(flash){
+        $(flash).parent().remove()
+    }
 </script>
 </body>
 </html>
