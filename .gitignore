@@ -132,3 +132,19 @@ dmypy.json
 
 #docker mysql
 **/docker/mysql
+
+*.pyc
+__pycache__
+db.sqlite3
+/static
+.DS_Store
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+/.idea
+/venv
