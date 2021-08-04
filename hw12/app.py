@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 
-
 app = Flask(__name__)
 
 
@@ -10,18 +9,15 @@ def hello_world():
 
 
 @app.route('/calc/<int:a>/<int:b>/<string:func>')
-def calc(a,b,func):
-    if func == 'sum':
-        return render_template('calc.html', a=a, b=b, func = "+", result = a + b)
-    elif func == 'dif':
-        return render_template('calc.html', a=a, b=b, func = "-",result = a - b)
-    elif func == 'mult':
-        return render_template('calc.html', a=a, b=b, func = "*",result = a * b)
-    elif func == 'div':
-        if b == 0:
+def calc(a, b, func):
+    actions = {'sum': "+", 'dif': "-", 'mult': "*", 'div': "/"}
+    func_c = eval(func, actions)
+    expr = str(a) + func_c + str(b)
+    res = eval(expr)
+    if func_c:
+        if func_c == '/' and b == 0:
             return render_template('calc.html', b=b)
-        else:
-            return render_template('calc.html', a=a, b=b, func = "/", result = a / b)
+        return render_template('calc.html', a=a, b=b, func=func_c, result=res)
     else:
         return render_template('calc.html', func="Null")
 
