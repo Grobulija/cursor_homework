@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Dealer</title>
+</head>
+<body>
+<h1>Looking for new or used cars? We have the best new & used cars for sale with dealerships!</h1>
+<p>For more information, please tap on one of links up bellow:</p>
+<ul>
+    <li><a href="{% url 'cars:car_list' %}">Cars</a></li>
+    <li><a href="{% url 'dealers:dealer_list' %}">Dealers</a></li>
+    <li><a href="{% url 'orders:order_list' %}">Orders</a></li>
+</ul>
+</body>
+</html>
