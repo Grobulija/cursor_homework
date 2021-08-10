@@ -27,4 +27,3 @@ class FooterItem(Resource):
 
 api.add_resource(MenuItem, '/menu-items')
 api.add_resource(FooterItem, '/footer-items')
-

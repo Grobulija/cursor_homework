@@ -20,7 +20,7 @@ class Todo(Resource):
 
     def delete(self, todo_id):
         del todos[todo_id]
-        return Response(todos, status=204)
+        return Response(status=204)
 
 
 class TodoList(Resource):
