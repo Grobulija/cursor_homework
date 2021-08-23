@@ -51,9 +51,7 @@ class Articles(Resource):
             articles = articles.order_by(request.args.get("sort_by"))
 
         articles = articles.all()
-        serialized_articles = []
-        for article in articles:
-            serialized_articles.append(article.serialize)
+        serialized_articles = [article.serialize for article in user.articles]
 
         return serialized_articles
 
@@ -71,10 +69,7 @@ class Users(Resource):
         user = User.query.get(1)
         if user is None:
             return Response(status=404)
-        serialized_articles = []
-        for article in user.articles:
-            print(article)
-            serialized_articles.append(article.serialize)
+        serialized_articles = [article.serialize for article in user.articles]
         return serialized_articles
 
 
@@ -83,10 +78,7 @@ class UserRead(Resource):
         user = User.query.get(id)
         if user is None:
             return Response(status=404)
-        serialized_articles = []
-        for article in user.articles:
-            print(article)
-            serialized_articles.append(article.serialize)
+        serialized_articles = [article.serialize for article in user.articles]
         serialized_user = [user.serialize, serialized_articles]
         return serialized_user
 
